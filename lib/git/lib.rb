@@ -514,6 +514,13 @@ module Git
       unmerged
     end
 
+    def pull(remote, branch)      
+      arr_opts = []
+      arr_opts << remote
+      arr_opts << branch
+      command('pull', arr_opts)
+    end
+
     def conflicts # :yields: file, your, their
       self.unmerged.each do |f|
         your = Tempfile.new("YOUR-#{File.basename(f)}").path
